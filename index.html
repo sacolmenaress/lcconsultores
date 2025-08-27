@@ -240,7 +240,7 @@
         const count = +counter.innerText;
 
         const increment = 1; 
-        const speed = 120; // más alto = más lento
+        const speed = 180; // más alto = más lento
 
         if (count < target) {
           counter.innerText = count + increment;
@@ -258,7 +258,7 @@
     progressBars.forEach(bar => {
       const target = +bar.getAttribute('data-target');
       let width = 0;
-      const speed = 30; // más alto = más lento
+      const speed = 60; // más alto = más lento
 
       const fill = setInterval(() => {
         if (width >= target) {
