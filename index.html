@@ -232,59 +232,76 @@
   const counters = document.querySelectorAll('.counter');
   const progressBars = document.querySelectorAll('.progress-bar');
 
-  // Contador animado
+  // ---- Contador animado con velocidad fija ----
   const animateCounters = () => {
     counters.forEach(counter => {
-      const updateCount = () => {
-        const target = +counter.getAttribute('data-target');
-        const count = +counter.innerText;
+      const target = +counter.getAttribute('data-target');
+      let count = parseInt(counter.innerText.replace(/\D/g, ''), 10) || 0;
 
-        const increment = 1; 
-        const speed = 180; // más alto = más lento
+      const speed = 180; // ms por incremento
+
+      const updateCount = (lastTime) => {
+        const now = performance.now();
+        if (!lastTime) lastTime = now;
+        if (now - lastTime >= speed) {
+          count += 1; // incremento fijo
+          counter.innerText = count;
+          lastTime = now;
+        }
 
         if (count < target) {
-          counter.innerText = count + increment;
-          setTimeout(updateCount, speed);
+          requestAnimationFrame((time) => updateCount(lastTime));
         } else {
           counter.innerText = target;
         }
       };
-      updateCount();
+
+      requestAnimationFrame(updateCount);
     });
   };
 
-  // Barra animada
+  // ---- Barra de progreso con velocidad fija ----
   const animateProgress = () => {
     progressBars.forEach(bar => {
       const target = +bar.getAttribute('data-target');
       let width = 0;
-      const speed = 60; // más alto = más lento
+      const speed = 60; // ms por incremento
 
-      const fill = setInterval(() => {
-        if (width >= target) {
-          clearInterval(fill);
-        } else {
+      const fill = (lastTime) => {
+        const now = performance.now();
+        if (!lastTime) lastTime = now;
+        if (now - lastTime >= speed) {
           width++;
           bar.style.width = width + "%";
+          lastTime = now;
         }
-      }, speed);
+
+        if (width < target) {
+          requestAnimationFrame((time) => fill(lastTime));
+        } else {
+          bar.style.width = target + "%";
+        }
+      };
+
+      requestAnimationFrame(fill);
     });
   };
 
-  // Observador: inicia al entrar en pantalla
+  // ---- Observador: inicia al entrar en pantalla ----
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         animateCounters();
         animateProgress();
-        observer.disconnect();
+        observer.disconnect(); // evita que vuelva a animar
       }
     });
-  });
+  }, { threshold: 0.3 });
 
   observer.observe(document.querySelector('#about'));
 </script>
-    </section><!-- /About Section -->
+
+    </section>
 
    
 
