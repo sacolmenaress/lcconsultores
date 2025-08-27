@@ -399,37 +399,38 @@
           </div>
 
           <div class="col-lg-7">
-            <form action="forms/contact.php" method="post">
+            <form action="https://formspree.io/f/xgvleddj" method="POST">
+                  <div class="row gy-4">
 
-              <div class="row gy-4">
+                    <div class="col-md-6">
+                      <label for="name-field" class="pb-2">Nombre</label>
+                      <input type="text" name="name" id="name-field" class="form-control" required>
+                    </div>
 
-                <div class="col-md-6">
-                  <label for="name-field" class="pb-2">Nombre</label>
-                  <input type="text" name="name" id="name-field" class="form-control" required="">
-                </div>
+                    <div class="col-md-6">
+                      <label for="email-field" class="pb-2">Correo</label>
+                      <input type="email" class="form-control" name="email" id="email-field" required>
+                    </div>
 
-                <div class="col-md-6">
-                  <label for="email-field" class="pb-2">Correo</label>
-                  <input type="email" class="form-control" name="email" id="email-field" required="">
-                </div>
+                    <div class="col-md-12">
+                      <label for="subject-field" class="pb-2">Asunto</label>
+                      <input type="text" class="form-control" name="subject" id="subject-field" required>
+                    </div>
 
-                <div class="col-md-12">
-                  <label for="subject-field" class="pb-2">Asunto</label>
-                  <input type="text" class="form-control" name="subject" id="subject-field" required="">
-                </div>
+                    <div class="col-md-12">
+                      <label for="message-field" class="pb-2">Mensaje</label>
+                      <textarea class="form-control" name="message" rows="10" id="message-field" required></textarea>
+                    </div>
 
-                <div class="col-md-12">
-                  <label for="message-field" class="pb-2">Mensaje</label>
-                  <textarea class="form-control" name="message" rows="10" id="message-field" required=""></textarea>
-                </div>
+                    <div class="col-md-12 text-center">
+                      <button type="submit">Enviar</button>
+                    </div>
 
-                <div class="col-md-12 text-center">
-                  <button type="submit">Enviar</button>
-                </div>
+                  </div>
+              </form>
 
-              </div>
-            </form>
           </div>
+          
 
         </div>
 
