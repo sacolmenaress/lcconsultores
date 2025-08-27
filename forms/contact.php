@@ -1,41 +1,41 @@
 <?php
-  /**
-  * Requires the "PHP Email Form" library
-  * The "PHP Email Form" library is available only in the pro version of the template
-  * The library should be uploaded to: vendor/php-email-form/php-email-form.php
-  * For more info and help: https://bootstrapmade.com/php-email-form/
-  */
+// Datos del formulario
+$name    = $_POST['name'] ?? '';
+$email   = $_POST['email'] ?? '';
+$subject = $_POST['subject'] ?? '';
+$message = $_POST['message'] ?? '';
 
-  // Replace contact@example.com with your real receiving email address
-  $receiving_email_address = 'contact@example.com';
+// Validación básica
+if(empty($name) || empty($email) || empty($subject) || empty($message)){
+    die('Por favor completa todos los campos.');
+}
 
-  if( file_exists($php_email_form = '../assets/vendor/php-email-form/php-email-form.php' )) {
-    include( $php_email_form );
-  } else {
-    die( 'Unable to load the "PHP Email Form" Library!');
-  }
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    die('Por favor ingresa un email válido.');
+}
 
-  $contact = new PHP_Email_Form;
-  $contact->ajax = true;
-  
-  $contact->to = $receiving_email_address;
-  $contact->from_name = $_POST['name'];
-  $contact->from_email = $_POST['email'];
-  $contact->subject = $_POST['subject'];
+// Destinatario
+$to = 'sacolmenaress@gmail.com';
 
-  // Uncomment below code if you want to use SMTP to send emails. You need to enter your correct SMTP credentials
-  /*
-  $contact->smtp = array(
-    'host' => 'example.com',
-    'username' => 'example',
-    'password' => 'pass',
-    'port' => '587'
-  );
-  */
+// Cabeceras
+$headers = "From: $name <$email>" . "\r\n";
+$headers .= "Reply-To: $email" . "\r\n";
+$headers .= "Content-Type: text/html; charset=UTF-8\r\n";
 
-  $contact->add_message( $_POST['name'], 'From');
-  $contact->add_message( $_POST['email'], 'Email');
-  $contact->add_message( $_POST['message'], 'Message', 10);
+// Contenido del mensaje
+$email_content = "
+    <h3>Nuevo mensaje de contacto</h3>
+    <p><strong>Nombre:</strong> $name</p>
+    <p><strong>Email:</strong> $email</p>
+    <p><strong>Asunto:</strong> $subject</p>
+    <p><strong>Mensaje:</strong></p>
+    <p>".nl2br(htmlspecialchars($message))."</p>
+";
 
-  echo $contact->send();
+// Enviar correo
+if (mail($to, $subject, $email_content, $headers)) {
+    echo 'success';
+} else {
+    echo 'Error al enviar el mensaje.';
+}
 ?>
