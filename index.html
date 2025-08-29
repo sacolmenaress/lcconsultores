@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>LC CONSULTORES</title>
+  <title>LC CONSULTORES S.C</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
@@ -38,7 +38,8 @@
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
       <a href="index.html" class="logo d-flex align-items-center">
-        <h1 class="sitename">LC CONSULTORES</h1>
+        <img src="assets/img/miniicon.png" alt="Logo LC Consultores" class="logo-img">
+        <h1 class="sitename">LC CONSULTORES S.C</h1>
       </a>
 
       <nav id="navmenu" class="navmenu">
@@ -60,24 +61,42 @@
 
    <!-- Hero Section -->
 <section id="hero" class="hero section dark-background">
-
-  <!-- Video de fondo -->
-  <video autoplay muted loop playsinline data-aos="fade-in">
-    <source src="assets/video/hero-bg.mp4" type="video/mp4">
-    Tu navegador no soporta video en HTML5.
-  </video>
+  <!-- Overlay blanco difuminado -->
+  <div class="overlay"></div>
 
   <div class="container text-center" data-aos="fade-up" data-aos-delay="100">
     <div class="row justify-content-center">
       <div class="col-lg-8">
-        <h2>Orientados a la excelencia</h2>
-        <p>Outsourcing de contabilidad y asesoría financiera</p>
+        <h2>Outsourcing de contabilidad y asesoría financiera</h2>
+        <p>Orientados a la excelencia</p>
         <a href="#soluciones" class="btn-get-started">Conocer más</a>
       </div>
     </div>
   </div>
-
 </section>
+
+<!--Logica del carrusel de imagenes-->
+<script>
+  const hero = document.querySelector('#hero');
+  const heroImages = [
+    'assets/img/imagenfondo.jpg',
+    'assets/img/imagenfondo2.png',
+    'assets/img/imagenfondo3.jpg'
+  ];
+  let heroIndex = 0;
+
+  function changeHeroBackground() {
+    hero.style.backgroundImage = `url(${heroImages[heroIndex]})`;
+    heroIndex = (heroIndex + 1) % heroImages.length;
+  }
+
+
+  changeHeroBackground();
+
+  // cambiar cada 15 segundos
+  setInterval(changeHeroBackground, 15000);
+</script>
+
 
 <!-- Sección Soluciones Contables y Financieras -->
 <section id="soluciones" class="soluciones section">
@@ -97,6 +116,15 @@
           </div>
           <h5 class="fw-bold">RNC</h5>
           <p class="text-muted">Información breve aquí</p>
+          <a href="#" class="conocer-mas">Conocer más →</a>
+        </div>
+        <!-- Modal RNC -->
+        <div class="modal">
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>RNC</h3>
+            <p>Aquí va la información detallada del servicio RNC.</p>
+          </div>
         </div>
       </div>
 
@@ -108,17 +136,35 @@
           </div>
           <h5 class="fw-bold">Avalúo</h5>
           <p class="text-muted">Información breve aquí</p>
+          <a href="#" class="conocer-mas">Conocer más →</a>
+        </div>
+        <!-- Modal Avalúo -->
+        <div class="modal">
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Avalúo</h3>
+            <p>Detalles sobre Avalúo y cómo lo realizamos.</p>
+          </div>
         </div>
       </div>
 
-      <!-- Libros Contables -->
+      <!-- Procesos Contables -->
       <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
         <div class="card shadow-sm h-100 text-center p-4 border-0">
           <div class="icon mb-3">
             <i class="bi bi-journal-text fs-1 text-warning"></i>
           </div>
-          <h5 class="fw-bold">Libros Contables</h5>
+          <h5 class="fw-bold">Procesos Contables</h5>
           <p class="text-muted">Información breve aquí</p>
+          <a href="#" class="conocer-mas">Conocer más →</a>
+        </div>
+        <!-- Modal Procesos Contables -->
+        <div class="modal">
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Procesos Contables</h3>
+            <p>Información completa sobre Procesos Contables.</p>
+          </div>
         </div>
       </div>
 
@@ -130,6 +176,15 @@
           </div>
           <h5 class="fw-bold">SENIAT</h5>
           <p class="text-muted">Información breve aquí</p>
+          <a href="#" class="conocer-mas">Conocer más →</a>
+        </div>
+        <!-- Modal SENIAT -->
+        <div class="modal">
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>SENIAT</h3>
+            <p>Detalles sobre trámites y soporte con SENIAT.</p>
+          </div>
         </div>
       </div>
 
@@ -141,6 +196,15 @@
           </div>
           <h5 class="fw-bold">Auditoría</h5>
           <p class="text-muted">Información breve aquí</p>
+          <a href="#" class="conocer-mas">Conocer más →</a>
+        </div>
+        <!-- Modal Auditoría -->
+        <div class="modal">
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Auditoría</h3>
+            <p>Descripción detallada de Auditoría.</p>
+          </div>
         </div>
       </div>
 
@@ -152,6 +216,15 @@
           </div>
           <h5 class="fw-bold">Balances Personales</h5>
           <p class="text-muted">Información breve aquí</p>
+          <a href="#" class="conocer-mas">Conocer más →</a>
+        </div>
+        <!-- Modal Balances Personales -->
+        <div class="modal">
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Balances Personales</h3>
+            <p>Todo sobre Balances Personales.</p>
+          </div>
         </div>
       </div>
 
@@ -159,24 +232,44 @@
   </div>
 </section>
 
+<!--Logica para cada modal-->
+<script>
+document.querySelectorAll('.col-lg-4').forEach(col => {
+  const btn = col.querySelector('.conocer-mas');
+  const modal = col.querySelector('.modal');
+  const closeBtn = col.querySelector('.close');
+
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    modal.style.display = 'block';
+  });
+
+  closeBtn.addEventListener('click', () => {
+    modal.style.display = 'none';
+  });
+
+  window.addEventListener('click', (e) => {
+    if(e.target == modal){
+      modal.style.display = 'none';
+    }
+  });
+});
+</script>
+
 <!-- About Section -->
 <section id="about" class="about section bg-light">
   <div class="container">
     <div class="row align-items-center gy-5">
+ 
 
       <!-- Texto de presentación -->
       <div class="col-lg-6" data-aos="fade-right">
         <h2 class="fw-bold">¿Por qué contratarnos?</h2>
         <p class="lead mb-4">
-          Somos más que contadores: un aliado estratégico que combina
-          <strong>trayectoria, innovación tecnológica</strong> y un equipo humano
-          altamente calificado para potenciar tu negocio.
+          Somos una firma comprometida con <strong>la confianza, la transparencia y la solidez financiera</strong> de nuestros clientes. <br>
+          Garantizamos seguridad contable y fiscal con procesos precisos y apegados a la norma, entregando información clara para decisiones acertadas. 
+          Con nosotros, su empresa cuenta con respaldo profesional que asegura estabilidad y continuidad.
         </p>
-        <ul class="list-unstyled">
-          <li class="mb-3"><i class="bi bi-check-circle-fill text-primary me-2"></i> Atención cercana y personalizada</li>
-          <li class="mb-3"><i class="bi bi-check-circle-fill text-primary me-2"></i> Soluciones integrales y modernas</li>
-          <li class="mb-3"><i class="bi bi-check-circle-fill text-primary me-2"></i> Confianza y transparencia</li>
-        </ul>
       </div>
 
       <!-- Highlights dinámicos -->

@@ -20,6 +20,7 @@
   --nav-dropdown-background-color: #ffffff; 
   --nav-dropdown-color: #212529; 
   --nav-dropdown-hover-color: #847944;
+  --logo-color: #847944;
 }
 
 
@@ -94,6 +95,7 @@ h6 {
   font-size: 26px;
   margin: 0;
   font-weight: 700;
+  font-family: 'Raleway', sans-serif;
   color: var(--heading-color);
   text-transform: uppercase;
 }
@@ -180,63 +182,8 @@ h6 {
   .navmenu .active:focus {
     color: var(--nav-color);
   }
-
-  .navmenu .dropdown ul {
-    margin: 0;
-    padding: 10px 0;
-    background: var(--nav-dropdown-background-color);
-    display: block;
-    position: absolute;
-    visibility: hidden;
-    left: 14px;
-    top: 130%;
-    opacity: 0;
-    transition: 0.3s;
-    border-radius: 4px;
-    z-index: 99;
-    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
-  }
-
-  .navmenu .dropdown ul li {
-    min-width: 200px;
-  }
-
-  .navmenu .dropdown ul a {
-    padding: 10px 20px;
-    font-size: 15px;
-    text-transform: none;
-    color: var(--nav-dropdown-color);
-  }
-
-  .navmenu .dropdown ul a i {
-    font-size: 12px;
-  }
-
-  .navmenu .dropdown ul a:hover,
-  .navmenu .dropdown ul .active:hover,
-  .navmenu .dropdown ul li:hover>a {
-    color: var(--nav-dropdown-hover-color);
-  }
-
-  .navmenu .dropdown:hover>ul {
-    opacity: 1;
-    top: 100%;
-    visibility: visible;
-  }
-
-  .navmenu .dropdown .dropdown ul {
-    top: 0;
-    left: -90%;
-    visibility: hidden;
-  }
-
-  .navmenu .dropdown .dropdown:hover>ul {
-    opacity: 1;
-    top: 0;
-    left: -100%;
-    visibility: visible;
-  }
 }
+
 
 
 @media (max-width: 1199px) {
@@ -666,6 +613,11 @@ section,
   margin-bottom: 0;
 }
 
+.logo-img {
+  height: 60px;  
+  margin-right: 20px;
+}
+
 
 .hero {
   width: 100%;
@@ -677,16 +629,6 @@ section,
   justify-content: center;
 }
 
-/* Video de fondo */
-.hero video {
-  position: absolute;
-  inset: 0; 
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 1;
-}
 
 
 .hero:before {
@@ -731,8 +673,8 @@ section,
 
 .hero .btn-get-started:hover {
   color: var(--contrast-color);
-  background: var(--accent-color);
-  border-color: var(--accent-color);
+  background: var(--logo-color);
+  border-color: var(--logo-color);
 }
 
 @media (max-width: 768px) {
@@ -745,6 +687,64 @@ section,
   }
 }
 
+
+/*El hero con carrusel de imagenes*/
+#hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: background-image 1s ease-in-out;
+}
+
+#hero .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,0.4); /* blanco 70% */
+  backdrop-filter: blur(6px); /* efecto difuminado */
+  z-index: 1;
+}
+
+#hero .container {
+  position: relative;
+  z-index: 2; /* para que el texto quede arriba del overlay */
+}
+
+/*Para que las imagenes tengan la misma proporcion en tlf*/
+/* Añade esto al final de tu main.css */
+#hero {
+  background-color: #f8f9fa; /* Color de respaldo similar a tus imágenes */
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+/* Para móviles específicamente */
+@media (max-width: 768px) {
+  #hero {
+    background-position: top center;
+    background-attachment: scroll;
+  }
+  
+  /* Fuerza que el overlay cubra cualquier área gris */
+  #hero .overlay {
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(6px);
+  }
+}
+
+#about h2.fw-bold {
+  font-family: 'Lora', sans-serif; /* o la fuente que quieras */
+  font-weight: 700; /* opcional, si quieres más gruesa */
+  font-size: 40px; /* ajusta el tamaño según tu diseño */
+}
 
 .about .about-content h3 {
   font-weight: 700;
@@ -766,32 +766,89 @@ section,
   margin-top: 35px;
 }
 
-.about .about-content ul i {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  width: 64px;
-  height: 64px;
-  font-size: 32px;
-  color: #fff;
-  background: var(--accent-color);
-  margin-right: 15px;
-  line-height: 0;
-  border-radius: 5px;
+#about {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* ajusta según tu sección */
+  overflow: hidden; /* evita que el ::before se desborde */
 }
 
+#about {
+  position: relative;
+  width: 100%;
+  height: 70vh; /* altura relativa a la pantalla */
+  background: linear-gradient(135deg, #ffffff, #e9e5db, #c7c7c7);
+  display: flex;
+  align-items: center;
+  color: #000; /* texto negro sobre el degradado */
+  padding: 50px 20px; /* padding horizontal reducido en móviles */
+  box-sizing: border-box;
+  flex-direction: column; /* por defecto en móviles */
+  text-align: center; /* centra el contenido en móviles */
+}
+
+/* Ajustes de los íconos y listas para móviles */
+.about .about-content ul i {
+  width: 48px;
+  height: 48px;
+  font-size: 24px;
+  margin-right: 10px;
+}
+
+/* Ajuste de títulos y párrafos */
 .about .about-content ul h4 {
-  font-size: 18px;
-  font-weight: 600;
+  font-size: 16px;
 }
 
 .about .about-content ul p {
-  font-size: 15px;
+  font-size: 14px;
 }
 
-.about .about-content p:last-child {
-  margin-bottom: 0;
+/* Media queries para tablets y móviles */
+@media (min-width: 768px) {
+  #about {
+    flex-direction: row; /* vuelve a fila en tablets y desktop */
+    text-align: left;
+    padding: 50px 0;
+    height: 70vh;
+  }
+
+  .about .about-content ul i {
+    width: 64px;
+    height: 64px;
+    font-size: 32px;
+    margin-right: 15px;
+  }
+
+  .about .about-content ul h4 {
+    font-size: 18px;
+  }
+
+  .about .about-content ul p {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  #about {
+    height: auto; /* altura automática en móviles */
+    padding: 30px 15px;
+  }
+
+  .about .about-content ul i {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    margin-right: 10px;
+  }
+
+  .about .about-content ul h4 {
+    font-size: 15px;
+  }
+
+  .about .about-content ul p {
+    font-size: 13px;
+  }
 }
 
 
@@ -908,6 +965,59 @@ section,
   color: color-mix(in srgb, var(--default-color), transparent 10%);
 }
 
+.conocer-mas {
+  display: inline-block;
+  margin-top: 10px;
+  font-weight: 500;
+  color: var(--logo-color); 
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.conocer-mas:hover {
+  color: var(--logo-color); 
+  text-decoration: underline;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 30px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.close {
+  color: #333;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: #000;
+}
+
+
+#soluciones .icon i {
+  color: #847944 !important; /*Si quieres volver a color de los logos, comenta esto*/
+}
+
 
 /*--------------------------------------------------------------
 # Preguntas Frecuentes Section
@@ -993,6 +1103,33 @@ section,
   transform: rotate(90deg);
   color: var(--accent-color);
 }
+
+#faq {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: background-image 1s ease-in-out; /* transición suave */
+}
+
+#faq .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,0.6); /* blanco al 60% */
+  backdrop-filter: blur(6px); /* efecto borroso */
+  z-index: 1;
+}
+
+#faq .container,
+#faq .section-title,
+#faq .faq-container {
+  position: relative;
+  z-index: 2; /* el contenido va arriba del overlay */
+}
+
 
 .contact .info-wrap {
   background-color: var(--surface-color);
