@@ -656,23 +656,30 @@ section,
   z-index: 3;
 }
 
+
 .hero h2 {
   margin: 0;
   font-size: 3.5rem;
   font-weight: 400;
   font-family: 'Lora', sans-serif;
   line-height: 1.2;
+  color: #fff;
+  text-shadow: 
+    0 2px 6px rgba(0,0,0,.60),    /* sombra para contraste */
+    0 0 20px rgba(255,255,255,.65); /* glow suave */
 }
 
-.hero p {
-  margin: 15px 0 0 0;
-  font-size: 1.4rem;
-  color: var(--heading-color);
-  font-family: 'Cormorant Garamond', serif;
+.hero p { 
+  margin: 15px 0 0 0; 
+  font-size: 2.0rem; 
+  color: var(--heading-color); 
+  font-family: 'Cormorant Garamond', serif; 
 }
+
+
 
 .hero .btn-get-started {
-  color: var(--default-color);
+  color: #000;
   font-weight: 400;
   font-size: 16px;
   letter-spacing: 1px;
@@ -682,6 +689,7 @@ section,
   border-radius: 4px;
   transition: 0.5s;
   border: 2px solid color-mix(in srgb, var(--default-color), transparent 50%);
+  background-color: rgba(255, 255, 255, 0.5); /* Esto crea un fondo blanco con 50% de transparencia */
 }
 
 .hero .btn-get-started:hover {
@@ -693,25 +701,29 @@ section,
 @media (max-width: 992px) {
   .hero h2 {
     font-size: 2.8rem;
+    margin-top: 30px; 
   }
   
   .hero p {
     font-size: 1.2rem;
+    margin-top: 15px;
   }
 }
 
 @media (max-width: 768px) {
   .hero {
-    padding: 100px 0 60px;
+    padding: 120px 0 60px;
     min-height: auto;
   }
   
   .hero h2 {
     font-size: 2.2rem;
+    margin-top: 20px;
   }
 
   .hero p {
     font-size: 1.1rem;
+    margin-top: 10px;
   }
   
   .hero .btn-get-started {
@@ -723,10 +735,24 @@ section,
 @media (max-width: 480px) {
   .hero h2 {
     font-size: 1.8rem;
+    margin-top: 15px;
   }
   
   .hero p {
     font-size: 1rem;
+    margin-top: 8px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  #hero {
+    background-position: top center;
+    min-height: 60vh; 
+  }
+  
+  #hero .container {
+    padding-top: 20px; 
   }
 }
 
@@ -745,7 +771,7 @@ section,
 
 #hero {
   position: relative;
-  min-height: 100vh;
+  min-height: 130vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -755,6 +781,7 @@ section,
   image-rendering: auto;          /* asegura nitidez */
   transition: background-image 1s ease-in-out;
   filter: brightness(1.5); /* aumenta el brillo al 120% */
+  padding-top: 120px; 
 }
 
 
@@ -777,13 +804,10 @@ section,
   #hero {
     background-position: top center;
     background-attachment: scroll;
+    min-height: 50vh; 
   }
   
-  /* Fuerza que el overlay cubra cualquier área gris */
-  #hero .overlay {
-    background: rgba(255, 255, 255, 0.);
-    backdrop-filter: blur(6px);
-  }
+
 }
 #about {
   position: relative;
