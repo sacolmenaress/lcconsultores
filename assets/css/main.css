@@ -1460,3 +1460,19 @@ section,
   font-family: 'Lora', serif;
   transition: 0.3s;
 }
+
+/* ==== Header transparente en inicio, negro al hacer scroll ==== */
+.header {
+  background-color: transparent !important;
+  --background-color: transparent !important;
+  color: var(--heading-color) !important;
+  transition: background-color 0.3s ease;
+}
+
+/* Cuando haces scroll, vuelve al negro */
+.scrolled .header {
+  background-color: rgba(0, 0, 0, 0.8) !important;
+  --background-color: rgba(0, 0, 0, 0.8) !important;
+  color: #ffffff !important;
+  box-shadow: none !important;
+}
