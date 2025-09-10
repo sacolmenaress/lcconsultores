@@ -42,7 +42,6 @@
       <h1 class="sitename">LC CONSULTORES S.C</h1>
       </a>
 
-
       <nav id="navmenu" class="navmenu">
         <ul>
         <li><a href="#hero" class="active">Inicio</a></li>
@@ -65,24 +64,26 @@
   <!-- Overlay blanco difuminado -->
   <div class="overlay"></div>
 
-  <div class="container text-center" data-aos="fade-up" data-aos-delay="100">
-    <div class="row justify-content-center">
-      <div class="col-lg-8">
-        <h2>Outsourcing de contabilidad y asesoría financiera</h2>
-        <p>"Orientados a la excelencia"</p>
-        <a href="#soluciones" class="btn-get-started">Conocer más</a>
+<div class="container text-center" data-aos="fade-up" data-aos-delay="100">
+    <!-- <div class="container text-center" > -->
+    <div class="row justify-content-center mb-5">
+      <div class="">
+        <h2 class="">Outsourcing de contabilidad y asesoría financiera</h2>
+        <p class="">"Orientados a la excelencia"</p>
+        <a href="#soluciones" class="btn-get-started mb-5">Conocer más</a>
       </div>
     </div>
   </div>
+</section>
 </section>
 
 <!--Logica del carrusel de imagenes-->
 <script>
   const hero = document.querySelector('#hero');
   const heroImages = [
-    'assets/img/carrusel1.png',
-    'assets/img/carrusel2.png',
-    'assets/img/carrusel3.png'
+    'assets/img/1.png',
+    'assets/img/3.png',
+    'assets/img/2.png'
   ];
   let heroIndex = 0;
 
@@ -233,17 +234,20 @@
         </div>
       </div>
 
-       <!-- Capacitaciones -->
-      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+      <!-- Forzar salto antes de Capacitaciones -->
+      <div class="w-100 d-none d-lg-block"></div>
+
+      <!-- Capacitaciones -->
+      <div class="col-lg-4 col-md-6 mx-auto" data-aos="fade-up" data-aos-delay="200">
         <div class="card shadow-sm h-100 text-center p-4 border-0">
           <div class="icon mb-3">
-      <i class="bi bi-person-video3 fs-1 text-secondary"></i>
-    </div>
+            <i class="bi bi-person-video3 fs-1 text-secondary"></i>
+          </div>
           <h5 class="fw-bold">Capacitaciones</h5>
           <p class="text-muted">Programas de formación contable y financiera para tu equipo.</p>
           <a href="#" class="conocer-mas">Conocer más →</a>
         </div>
-        <!-- Modal Avalúo -->
+        <!-- Modal Capacitaciones -->
         <div class="modal">
           <div class="modal-content">
             <span class="close">&times;</span>
@@ -256,6 +260,7 @@
     </div>
   </div>
 </section>
+
 
 <!--Logica para cada modal-->
 <script>

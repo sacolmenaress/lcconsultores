@@ -645,11 +645,12 @@ section,
 
 .hero:before {
   content: "";
-  background: color-mix(in srgb, var(--background-color), transparent 30%);
   position: absolute;
   inset: 0;
   z-index: 2;
+  background: rgba(0,0,0,0.5); /* negro con 50% transparencia */
 }
+
 
 .hero .container {
   position: relative;
@@ -1248,10 +1249,10 @@ section,
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(255,255,255,0.6); /* blanco al 60% */
-  backdrop-filter: blur(6px); /* efecto borroso */
+  background: rgba(0,0,0,0.5); /* cambia el blanco traslúcido por un overlay oscuro */
   z-index: 1;
 }
+
 
 #faq .container,
 #faq .section-title,
